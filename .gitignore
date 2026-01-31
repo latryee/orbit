@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.venv
+.env
+.venv/
+env/
+venv/
+
+# Orbit Specific
+bin/
+ffmpeg_temp/
+ffmpeg.zip
+downloads/
+Orbit Downloads/
+
+# PyWebView
+*.pyc
+debug.log

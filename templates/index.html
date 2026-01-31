@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Downloader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-planet-ringed"></i> Orbit
+            </div>
+            <div class="window-controls">
+                <!-- Using pywebview drag region if needed, or keeping it clean -->
+            </div>
+        </header>
+
+        <!-- Search Area -->
+        <div class="search-section">
+            <h1 class="title">Universal Media Downloader</h1>
+            <p class="subtitle">Supports YouTube, Instagram, TikTok, X, and more.</p>
+
+            <div class="input-wrapper">
+                <i class="fa-solid fa-link input-icon"></i>
+                <input type="text" id="urlInput" placeholder="Paste link here..." autocomplete="off">
+                <button id="analyzeBtn" class="primary-btn">Analyze</button>
+            </div>
+        </div>
+
+        <!-- Preview Card (Hidden initially) -->
+        <div id="previewCard" class="preview-card hidden">
+            <div class="preview-content">
+                <img id="thumbnail" src="" alt="Thumbnail" class="thumb">
+                <div class="info">
+                    <h3 id="videoTitle">Video Title</h3>
+                    <p id="videoMeta">Duration • Platform</p>
+
+                    <div class="options">
+                        <select id="formatSelect">
+                            <option value="video_best">Best Quality (4K/1080p)</option>
+                            <option value="video_1080p">1080p HD</option>
+                            <option value="video_720p">720p (Fast)</option>
+                            <option value="audio_best">Audio Only (MP3)</option>
+                        </select>
+                        <button id="downloadBtn" class="download-btn">
+                            <i class="fa-solid fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Downloads List -->
+        <div class="downloads-section">
+            <h2>Active Downloads</h2>
+            <div id="downloadsList" class="downloads-list">
+                <!-- Items will be added here dynamically -->
+                <div class="empty-state">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                    <p>No active downloads</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notificationArea"></div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
