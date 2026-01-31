@@ -8,13 +8,10 @@ class OrbitDownloader:
             os.makedirs(self.download_folder)
 
     def get_info(self, url):
-        """
-        Fetches metadata for the video without downloading.
-        """
         ydl_opts = {
             'quiet': True,
             'no_warnings': True,
-            'extract_flat': True, # Fast extraction
+            'extract_flat': True,
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             try:
@@ -30,13 +27,6 @@ class OrbitDownloader:
                 return {'error': str(e)}
 
     def download(self, url, format_type='video', quality='best', progress_hook=None):
-        """
-        Downloads the media.
-        format_type: 'video' (MP4) or 'audio' (MP3)
-        quality: 'best', '1080p', '720p'
-        """
-        
-        # Base configuration
         ydl_opts = {
             'outtmpl': os.path.join(self.download_folder, '%(title)s.%(ext)s'),
             'quiet': True,
@@ -44,7 +34,6 @@ class OrbitDownloader:
             'progress_hooks': [progress_hook] if progress_hook else [],
         }
 
-        # Check for local FFmpeg
         ffmpeg_local = os.path.join(os.getcwd(), 'bin', 'ffmpeg.exe')
         if os.path.exists(ffmpeg_local):
             ydl_opts['ffmpeg_location'] = ffmpeg_local
@@ -58,14 +47,12 @@ class OrbitDownloader:
                     'preferredquality': '192',
                 }],
             })
-        else: # Video
+        else:
             if quality == '1080p':
-                 # Limit to 1080p but ensure MP4
                  fmt = 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]/best'
             elif quality == '720p':
-                 # Limit to 720p (often single file)
                  fmt = 'best[height<=720][ext=mp4]/best[height<=720]/best'
-            else: # Best (4K etc)
+            else:
                  fmt = 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
             
             ydl_opts.update({'format': fmt})
