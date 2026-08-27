@@ -4,7 +4,7 @@
   <img src="static/img/logo.png" width="120" alt="Orbit Logo" style="border-radius: 20px;">
   <br><br>
   <p><b>Universal Media Downloader for Windows</b></p>
-  <p>Download videos and audio from YouTube, Instagram, TikTok, X (Twitter),Snapchat and thousands of other sites.</p>
+  <p>Download videos and audio from YouTube, Instagram, TikTok, X (Twitter), and thousands of other sites.</p>
 
   <p>
     <img src="https://img.shields.io/badge/Windows-10%2F11-blue?style=flat-square&logo=windows" />
